@@ -12,7 +12,13 @@ class myCart extends StatefulWidget {
 }
 
 class _myCartState extends State<myCart> {
-  List<Widget> item = [];
+  bool isPress = false;
+  void _isPress() {
+    setState(() {
+      isPress = true;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -39,8 +45,9 @@ class _myCartState extends State<myCart> {
               itemCount: widget.mycart.listContains.length,
               itemBuilder: (context, index) {
                 int length = widget.mycart.listContains.length;
-
+                List<Widget> item = [];
                 for (int i = 0; i <= length; i++) {
+                  if (isPress == true) break;
                   item.add(
                     Padding(
                       padding: const EdgeInsets.only(bottom: 8),
@@ -249,8 +256,8 @@ class _myCartState extends State<myCart> {
                 onPressed: () {
                   setState(() {
                     listUser.last.cups += widget.mycart.numCups();
-                    item.clear();
                   });
+                  _isPress();
                   Navigator.push(
                       context,
                       MaterialPageRoute(

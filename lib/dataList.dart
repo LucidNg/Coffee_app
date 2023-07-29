@@ -101,10 +101,10 @@ class User {
 
 List<User> listUser = [
   User(
-      address: 'Nothing',
+      address: 'typeIn',
       cups: 0,
       points: 1340,
       name: 'User',
-      phone: '023456789',
-      email: 'a1@gmail.com'),
+      phone: '09XXXXXXXX',
+      email: 'your@gmail.com'),
 ];
