@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:web_app_1/dataList.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:web_app_1/screens/oder_success.dart';
 
 class myCart extends StatefulWidget {
   late Cart mycart;
@@ -248,8 +249,14 @@ class _myCartState extends State<myCart> {
                 onPressed: () {
                   setState(() {
                     listUser.last.cups += widget.mycart.numCups();
-                    widget.mycart.listContains.clear();
+                    item.clear();
                   });
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => orderSuccess(
+                                mycart: widget.mycart,
+                              )));
                 },
                 style: const ButtonStyle(
                     backgroundColor: MaterialStatePropertyAll<Color>(
