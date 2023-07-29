@@ -3,6 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:web_app_1/screens/cart.dart';
 import 'package:web_app_1/screens/detail_screen.dart';
 import 'package:web_app_1/dataList.dart';
+import 'package:web_app_1/screens/profile.dart';
 
 // ignore: must_be_immutable
 class HomeScreen extends StatefulWidget {
@@ -26,7 +27,6 @@ class _HomeScreenState extends State<HomeScreen>
 
   late Cart userCart = Cart(isDone: false);
   int cup = listUser.last.cups;
-
   void _counterReset() {
     if (cup > 8) {
       cup = 8;
@@ -160,9 +160,16 @@ class _HomeScreenState extends State<HomeScreen>
                                 size: 50,
                                 color: Colors.white,
                               )),
-                          const IconButton(
+                          IconButton(
                               // Thong tin ca nhan
-                              onPressed: null,
+                              onPressed: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => ProfilePage(
+                                              currentUser: listUser.last,
+                                            )));
+                              },
                               icon: Icon(Icons.person,
                                   size: 50, color: Colors.white))
                         ],
