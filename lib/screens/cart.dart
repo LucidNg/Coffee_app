@@ -188,7 +188,7 @@ class _myCartState extends State<myCart> {
                             ],
                           ),
                           Padding(
-                            padding: const EdgeInsets.only(left: 5, right: 10),
+                            padding: const EdgeInsets.only(left: 5, right: 5),
                             child: Column(
                               children: [
                                 Container(

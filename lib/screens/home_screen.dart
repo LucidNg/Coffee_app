@@ -35,24 +35,52 @@ class _HomeScreenState extends State<HomeScreen>
       currentImage1 = "cup";
     }
     if (cup == 2) {
+      currentImage1 = "cup";
       currentImage2 = "cup";
     }
     if (cup == 3) {
+      currentImage1 = "cup";
+      currentImage2 = "cup";
       currentImage3 = "cup";
     }
     if (cup == 4) {
+      currentImage1 = "cup";
+      currentImage2 = "cup";
+      currentImage3 = "cup";
       currentImage4 = "cup";
     }
     if (cup == 5) {
+      currentImage1 = "cup";
+      currentImage2 = "cup";
+      currentImage3 = "cup";
+      currentImage4 = "cup";
       currentImage5 = "cup";
     }
     if (cup == 6) {
+      currentImage1 = "cup";
+      currentImage2 = "cup";
+      currentImage3 = "cup";
+      currentImage4 = "cup";
+      currentImage5 = "cup";
       currentImage6 = "cup";
     }
     if (cup == 7) {
+      currentImage1 = "cup";
+      currentImage2 = "cup";
+      currentImage3 = "cup";
+      currentImage4 = "cup";
+      currentImage5 = "cup";
+      currentImage6 = "cup";
       currentImage7 = "cup";
     }
     if (cup == 8) {
+      currentImage1 = "cup";
+      currentImage2 = "cup";
+      currentImage3 = "cup";
+      currentImage4 = "cup";
+      currentImage5 = "cup";
+      currentImage6 = "cup";
+      currentImage7 = "cup";
       currentImage8 = "cup";
     }
     if (cup > 8) {
@@ -84,7 +112,6 @@ class _HomeScreenState extends State<HomeScreen>
     });
   }
 
-  // void _incrementCounter() {
   //   setState(() {
   //     counter++;
   // if (counter == 1) {
@@ -131,13 +158,6 @@ class _HomeScreenState extends State<HomeScreen>
     'Mocha',
     'Flat White',
   ];
-
-  // int _currentindex = 0;
-  // List<Widget> navbar = const [
-  //   Icon(Icons.home_filled),
-  //   Icon(Icons.gif_box_rounded),
-  //   Icon(Icons.list_rounded),
-  // ];
 
   @override
   Widget build(BuildContext context) {
