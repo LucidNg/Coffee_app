@@ -101,7 +101,7 @@ class User {
 
 List<User> listUser = [
   User(
-      address: 'typeIn',
+      address: '123,X road, X district, X city',
       cups: 0,
       points: 1340,
       name: 'User',

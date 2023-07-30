@@ -3,7 +3,9 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:web_app_1/screens/cart.dart';
 import 'package:web_app_1/screens/detail_screen.dart';
 import 'package:web_app_1/dataList.dart';
+import 'package:web_app_1/screens/my_order.dart';
 import 'package:web_app_1/screens/profile.dart';
+import 'package:web_app_1/screens/reward.dart';
 
 // ignore: must_be_immutable
 class HomeScreen extends StatefulWidget {
@@ -26,7 +28,7 @@ class _HomeScreenState extends State<HomeScreen>
   String currentImage8 = "bcup";
 
   late Cart userCart = Cart(isDone: false);
-  int cup = listUser.last.cups;
+  int cup = 0;
   void _counterReset() {
     if (cup > 8) {
       cup = 8;
@@ -38,6 +40,7 @@ class _HomeScreenState extends State<HomeScreen>
     super.initState();
     listUser.last.name = widget.name;
     setState(() {
+      cup = listUser.last.cups;
       _counterReset();
     });
   }
@@ -90,12 +93,12 @@ class _HomeScreenState extends State<HomeScreen>
     'Flat White',
   ];
 
-  int _currentindex = 0;
-  List<Widget> navbar = const [
-    Icon(Icons.home_filled),
-    Icon(Icons.gif_box_rounded),
-    Icon(Icons.list_rounded),
-  ];
+  // int _currentindex = 0;
+  // List<Widget> navbar = const [
+  //   Icon(Icons.home_filled),
+  //   Icon(Icons.gif_box_rounded),
+  //   Icon(Icons.list_rounded),
+  // ];
 
   @override
   Widget build(BuildContext context) {
@@ -123,21 +126,23 @@ class _HomeScreenState extends State<HomeScreen>
                           Text(
                             'Welcome ${listUser.last.name as String}',
                             style: GoogleFonts.pacifico(
-                                fontSize: 25, color: Colors.white),
+                                fontSize: 18, color: Colors.white),
                           ),
                         ],
                       ),
-                      const Row(
-                        children: [
-                          Text(
-                            "Lets order some coffee",
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 15),
-                          )
-                        ],
-                      )
+                      const Padding(
+                          padding: EdgeInsets.only(top: 5),
+                          child: Row(
+                            children: [
+                              Text(
+                                "Lets order some coffee",
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 15),
+                              )
+                            ],
+                          ))
                     ],
                   ),
                   Column(
@@ -207,7 +212,7 @@ class _HomeScreenState extends State<HomeScreen>
                                 fontWeight: FontWeight.bold),
                           ),
                           Text(
-                            '${listUser.last.cups}/8',
+                            '${cup}/8',
                             style: const TextStyle(
                                 color: Colors.white,
                                 fontSize: 25,
@@ -342,40 +347,85 @@ class _HomeScreenState extends State<HomeScreen>
           ],
         ),
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: Colors.white,
-        items: const [
-          BottomNavigationBarItem(
-            label: 'Home',
-            icon: Icon(
-              Icons.home_filled,
-              color: Color.fromARGB(255, 70, 55, 49),
+      bottomNavigationBar: Container(
+        height: 60,
+        margin: EdgeInsets.only(bottom: 7, left: 5, right: 5),
+        decoration: const BoxDecoration(
+          color: Colors.white,
+          boxShadow: [BoxShadow(offset: Offset(0, -5), blurRadius: 20)],
+          borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(20),
+              bottomLeft: Radius.circular(20),
+              bottomRight: Radius.circular(20),
+              topRight: Radius.circular(20)),
+        ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            IconButton(
+              onPressed: () {},
+              icon: const ImageIcon(AssetImage("images/home.png")),
+              iconSize: 32,
             ),
-          ),
-          BottomNavigationBarItem(
-            label: 'Rewards',
-            icon: Icon(
-              Icons.gif_box_rounded,
-              color: Color.fromARGB(255, 70, 55, 49),
+            IconButton(
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => RewardPage(
+                              ordercart: userCart,
+                            )));
+              },
+              icon: const ImageIcon(AssetImage("images/gift.png")),
+              iconSize: 32,
             ),
-          ),
-          BottomNavigationBarItem(
-            label: 'My Orders',
-            icon: Icon(
-              Icons.list_rounded,
-              color: Color.fromARGB(255, 70, 55, 49),
+            IconButton(
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => MyOrder(ordercart: userCart)));
+              },
+              icon: const ImageIcon(AssetImage("images/myorder.png")),
+              iconSize: 32,
             ),
-          )
-        ],
-        currentIndex: _currentindex,
-        onTap: (int newIndex) {
-          setState(() {
-            _currentindex = newIndex;
-          });
-        },
-        fixedColor: const Color.fromARGB(255, 70, 55, 49),
-        selectedLabelStyle: const TextStyle(fontWeight: FontWeight.bold),
+          ],
+        ),
       ),
+      // bottomNavigationBar: BottomNavigationBar(
+      //   backgroundColor: Colors.white,
+      //   items: const [
+      //     BottomNavigationBarItem(
+      //       label: 'Home',
+      //       icon: Icon(
+      //         Icons.home_filled,
+      //         color: Color.fromARGB(255, 70, 55, 49),
+      //       ),
+      //     ),
+      //     BottomNavigationBarItem(
+      //       label: 'Rewards',
+      //       icon: Icon(
+      //         Icons.gif_box_rounded,
+      //         color: Color.fromARGB(255, 70, 55, 49),
+      //       ),
+      //     ),
+      //     BottomNavigationBarItem(
+      //       label: 'My Orders',
+      //       icon: Icon(
+      //         Icons.list_rounded,
+      //         color: Color.fromARGB(255, 70, 55, 49),
+      //       ),
+      //     )
+      //   ],
+      //   currentIndex: _currentindex,
+      //   onTap: (int newIndex) {
+      //     setState(() {
+      //       _currentindex = newIndex;
+      //     });
+      //   },
+      //   fixedColor: const Color.fromARGB(255, 70, 55, 49),
+      //   selectedLabelStyle: const TextStyle(fontWeight: FontWeight.bold),
+      // ),
     );
   }
 }

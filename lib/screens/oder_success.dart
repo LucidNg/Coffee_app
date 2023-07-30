@@ -1,8 +1,7 @@
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:web_app_1/dataList.dart';
+import 'package:web_app_1/screens/my_order.dart';
 
 class orderSuccess extends StatefulWidget {
   late Cart mycart;
@@ -50,12 +49,18 @@ class _orderSuccessState extends State<orderSuccess> {
                     fontSize: 13, fontWeight: FontWeight.bold),
               )),
           Padding(
-            padding: const EdgeInsets.only(left: 65, top: 50),
+            padding: const EdgeInsets.only(left: 60, top: 50),
             child: SizedBox(
               width: 300,
               height: 50,
               child: FilledButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) =>
+                                MyOrder(ordercart: widget.mycart)));
+                  },
                   style: const ButtonStyle(
                       backgroundColor: MaterialStatePropertyAll<Color>(
                           Color.fromARGB(255, 56, 34, 18))),
