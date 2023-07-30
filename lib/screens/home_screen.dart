@@ -30,9 +30,48 @@ class _HomeScreenState extends State<HomeScreen>
   late Cart userCart = Cart(isDone: false);
   int cup = 0;
   void _counterReset() {
+    cup = listUser.last.cups;
+    if (cup == 1) {
+      currentImage1 = "cup";
+    }
+    if (cup == 2) {
+      currentImage2 = "cup";
+    }
+    if (cup == 3) {
+      currentImage3 = "cup";
+    }
+    if (cup == 4) {
+      currentImage4 = "cup";
+    }
+    if (cup == 5) {
+      currentImage5 = "cup";
+    }
+    if (cup == 6) {
+      currentImage6 = "cup";
+    }
+    if (cup == 7) {
+      currentImage7 = "cup";
+    }
+    if (cup == 8) {
+      currentImage8 = "cup";
+    }
     if (cup > 8) {
       cup = 8;
     }
+    if (cup == 0) {
+      currentImage1 = "bcup";
+      currentImage2 = "bcup";
+      currentImage3 = "bcup";
+      currentImage4 = "bcup";
+      currentImage5 = "bcup";
+      currentImage6 = "bcup";
+      currentImage7 = "bcup";
+      currentImage8 = "bcup";
+    }
+  }
+
+  void reset() {
+    listUser.last.cups = 0;
   }
 
   @override
@@ -48,30 +87,30 @@ class _HomeScreenState extends State<HomeScreen>
   // void _incrementCounter() {
   //   setState(() {
   //     counter++;
-  //     if (counter == 1) {
-  //       currentImage1 = "cup";
-  //     }
-  //     if (counter == 2) {
-  //       currentImage2 = "cup";
-  //     }
-  //     if (counter == 3) {
-  //       currentImage3 = "cup";
-  //     }
-  //     if (counter == 4) {
-  //       currentImage4 = "cup";
-  //     }
-  //     if (counter == 5) {
-  //       currentImage5 = "cup";
-  //     }
-  //     if (counter == 6) {
-  //       currentImage6 = "cup";
-  //     }
-  //     if (counter == 7) {
-  //       currentImage7 = "cup";
-  //     }
-  //     if (counter == 8) {
-  //       currentImage8 = "cup";
-  //     }
+  // if (counter == 1) {
+  //   currentImage1 = "cup";
+  // }
+  // if (counter == 2) {
+  //   currentImage2 = "cup";
+  // }
+  // if (counter == 3) {
+  //   currentImage3 = "cup";
+  // }
+  // if (counter == 4) {
+  //   currentImage4 = "cup";
+  // }
+  // if (counter == 5) {
+  //   currentImage5 = "cup";
+  // }
+  // if (counter == 6) {
+  //   currentImage6 = "cup";
+  // }
+  // if (counter == 7) {
+  //   currentImage7 = "cup";
+  // }
+  // if (counter == 8) {
+  //   currentImage8 = "cup";
+  // }
   //     if (counter > 8) {
   //       currentImage1 = "bcup";
   //       currentImage2 = "bcup";
@@ -226,53 +265,58 @@ class _HomeScreenState extends State<HomeScreen>
                       //   onPressed: _incrementCounter,
                       //   child: Text('Increment'),
                       // ),
-                      Container(
-                        height: 70,
-                        margin: const EdgeInsets.fromLTRB(0, 5, 0, 0),
-                        decoration: BoxDecoration(
-                          color: const Color.fromARGB(255, 255, 255, 255),
-                          border: Border.all(
-                              width: 3,
-                              color: const Color.fromARGB(255, 225, 173, 1)),
-                          borderRadius:
-                              const BorderRadius.all(Radius.circular(25)),
-                        ),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            Image(
-                              image: AssetImage("images/$currentImage1.png"),
-                              width: 35,
-                            ),
-                            Image(
-                              image: AssetImage("images/$currentImage2.png"),
-                              width: 35,
-                            ),
-                            Image(
-                              image: AssetImage("images/$currentImage3.png"),
-                              width: 35,
-                            ),
-                            Image(
-                              image: AssetImage("images/$currentImage4.png"),
-                              width: 35,
-                            ),
-                            Image(
-                              image: AssetImage("images/$currentImage5.png"),
-                              width: 35,
-                            ),
-                            Image(
-                              image: AssetImage("images/$currentImage6.png"),
-                              width: 35,
-                            ),
-                            Image(
-                              image: AssetImage("images/$currentImage7.png"),
-                              width: 35,
-                            ),
-                            Image(
-                              image: AssetImage("images/$currentImage8.png"),
-                              width: 35,
-                            ),
-                          ],
+                      InkWell(
+                        onTap: () {
+                          reset();
+                        },
+                        child: Container(
+                          height: 70,
+                          margin: const EdgeInsets.fromLTRB(0, 5, 0, 0),
+                          decoration: BoxDecoration(
+                            color: const Color.fromARGB(255, 255, 255, 255),
+                            border: Border.all(
+                                width: 3,
+                                color: const Color.fromARGB(255, 225, 173, 1)),
+                            borderRadius:
+                                const BorderRadius.all(Radius.circular(25)),
+                          ),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              Image(
+                                image: AssetImage("images/$currentImage1.png"),
+                                width: 35,
+                              ),
+                              Image(
+                                image: AssetImage("images/$currentImage2.png"),
+                                width: 35,
+                              ),
+                              Image(
+                                image: AssetImage("images/$currentImage3.png"),
+                                width: 35,
+                              ),
+                              Image(
+                                image: AssetImage("images/$currentImage4.png"),
+                                width: 35,
+                              ),
+                              Image(
+                                image: AssetImage("images/$currentImage5.png"),
+                                width: 35,
+                              ),
+                              Image(
+                                image: AssetImage("images/$currentImage6.png"),
+                                width: 35,
+                              ),
+                              Image(
+                                image: AssetImage("images/$currentImage7.png"),
+                                width: 35,
+                              ),
+                              Image(
+                                image: AssetImage("images/$currentImage8.png"),
+                                width: 35,
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                     ],
