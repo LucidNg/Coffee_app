@@ -267,7 +267,9 @@ class _HomeScreenState extends State<HomeScreen>
                       // ),
                       InkWell(
                         onTap: () {
-                          reset();
+                          setState(() {
+                            reset();
+                          });
                         },
                         child: Container(
                           height: 70,
