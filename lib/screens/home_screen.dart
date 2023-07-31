@@ -100,6 +100,8 @@ class _HomeScreenState extends State<HomeScreen>
 
   void reset() {
     listUser.last.cups = 0;
+    cup = listUser.last.cups;
+    _counterReset();
   }
 
   @override

@@ -20,20 +20,30 @@ class _MyOrderState extends State<MyOrder> {
           child: Column(
         children: [
           Padding(
-            padding: EdgeInsets.only(left: 160, top: 20),
+            padding: EdgeInsets.only(left: 30, top: 20),
             child: Text(
               'My Order',
-              style: GoogleFonts.oswald(color: Colors.black, fontSize: 25),
+              style: GoogleFonts.oswald(
+                  color: Color.fromARGB(255, 53, 48, 48), fontSize: 25),
             ),
           ),
-          // ListView.builder(
-          //     physics: AlwaysScrollableScrollPhysics(),
-          //     shrinkWrap: true,
-          //     itemBuilder: (context, index) {
-          //       return ListTile(
-          //         title: Text('${widget.ordercart.listContains[index]}'),
-          //       );
-          //     })
+          SizedBox(
+            height: 200,
+          ),
+          Expanded(
+              child: ListView.separated(
+                  separatorBuilder: (context, index) => Divider(),
+                  itemCount: widget.ordercart.listContains.length,
+                  itemBuilder: (context, index) {
+                    return Container(
+                      child: Column(
+                        children: [
+                          Text(
+                              '${widget.ordercart.listContains[index].drink.name}')
+                        ],
+                      ),
+                    );
+                  }))
         ],
       )),
       bottomNavigationBar: Container(
